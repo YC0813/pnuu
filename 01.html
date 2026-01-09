@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>교통안전 데이터 대시보드</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;800&display=swap');
+        body { font-family: 'Pretendard', sans-serif; background-color: #f1f5f9; }
+        .safety-card { background: white; border-radius: 1.5rem; border-left: 6px solid #f59e0b; transition: transform 0.2s; }
+        .safety-card:hover { transform: translateY(-5px); }
+        .home-btn { transition: all 0.3s ease; }
+        .home-btn:hover { background-color: #1e293b; transform: scale(1.05); }
+    </style>
+</head>
+<body class="min-h-screen pb-20">
+
+    <!-- 상단 네비게이션 -->
+    <nav class="bg-white px-6 py-4 mb-8 shadow-sm">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl text-amber-500">🚨</span>
+                <span class="font-bold text-xl text-gray-800">교통안전 분석 시스템</span>
+            </div>
+            <a href="index.html" class="home-btn flex items-center bg-gray-800 text-white px-5 py-2 rounded-full text-sm font-semibold shadow-md">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                홈으로
+            </a>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6">
+        <!-- 메인 헤더 -->
+        <div class="mb-10">
+            <h1 class="text-3xl font-extrabold text-gray-900 mb-2">신호위반 교통사고 현황 보고</h1>
+            <p class="text-gray-600">최근 5년간(2020-2024)의 신호위반 사고 데이터를 시각화하여 분석합니다.</p>
+        </div>
+
+        <!-- 핵심 지표 요약 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <div class="safety-card p-6 shadow-sm">
+                <p class="text-gray-500 text-sm font-bold mb-1">최근 사고 건수 (2024)</p>
+                <p class="text-3xl font-black text-gray-800">22,371 <span class="text-lg">건</span></p>
+                <p class="text-green-600 text-xs mt-2 font-bold">✓ 5년 내 최저 기록</p>
+            </div>
+            <div class="safety-card p-6 shadow-sm border-amber-500">
+                <p class="text-gray-500 text-sm font-bold mb-1">최고 사고 비율 (2021)</p>
+                <p class="text-3xl font-black text-gray-800">12.31 <span class="text-lg">%</span></p>
+                <p class="text-amber-600 text-xs mt-2 font-bold">⚠ 주의가 필요했던 시기</p>
+            </div>
+            <div class="safety-card p-6 shadow-sm border-red-500">
+                <p class="text-gray-500 text-sm font-bold mb-1">연평균 감소율</p>
+                <p class="text-3xl font-black text-gray-800">약 2.1 <span class="text-lg">%</span></p>
+                <p class="text-blue-600 text-xs mt-2 font-bold">↓ 완만한 하락세 유지 중</p>
+            </div>
+        </div>
+
+        <!-- 차트 영역 -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                <h3 class="text-lg font-bold text-gray-800 mb-6 flex items-center">
+                    <span class="mr-2">📈</span> 연도별 사고 건수 변화
+                </h3>
+                <div style="height: 300px;">
+                    <canvas id="trafficChart"></canvas>
+                </div>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col justify-center">
+                <h3 class="text-lg font-bold text-gray-800 mb-4">데이터 분석 결과</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <span class="bg-amber-100 text-amber-600 p-1 rounded mr-3">✔</span>
+                        <p class="text-gray-700 text-sm">2021년에 사고 건수가 <strong>24,608건</strong>으로 가장 높았으나 이후 점진적으로 감소하고 있습니다.</p>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-amber-100 text-amber-600 p-1 rounded mr-3">✔</span>
+                        <p class="text-gray-700 text-sm">전체적인 사고 건수는 줄어들고 있지만, <strong>인명 피해 규모</strong>는 다시 반등하는 추세이므로 각별한 주의가 필요합니다.</p>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-amber-100 text-amber-600 p-1 rounded mr-3">✔</span>
+                        <p class="text-gray-700 text-sm">2024년 데이터(22,371건)는 지난 5년 중 가장 고무적인 수치를 나타내고 있습니다.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 안전 가이드 -->
+        <div class="bg-gray-900 rounded-3xl p-8 text-white flex flex-col md:flex-row items-center justify-between">
+            <div class="mb-6 md:mb-0">
+                <h2 class="text-2xl font-bold mb-2">교통법규 준수는 선택이 아닌 필수입니다.</h2>
+                <p class="text-gray-400">나와 이웃의 생명을 지키는 안전 운전, 오늘부터 실천하세요.</p>
+            </div>
+            <div class="flex space-x-4">
+                <div class="text-center px-4 py-2 border border-gray-700 rounded-2xl">
+                    <p class="text-xs text-gray-500">속도 준수</p>
+                    <p class="font-bold">Slow Down</p>
+                </div>
+                <div class="text-center px-4 py-2 border border-gray-700 rounded-2xl">
+                    <p class="text-xs text-gray-500">신호 준수</p>
+                    <p class="font-bold">Wait Light</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const trafficCtx = document.getElementById('trafficChart').getContext('2d');
+        new Chart(trafficCtx, {
+            type: 'bar',
+            data: {
+                labels: ['2020', '2021', '2022', '2023', '2024'],
+                datasets: [{
+                    label: '사고 건수',
+                    data: [24512, 24608, 22850, 23444, 22371],
+                    backgroundColor: [
+                        '#cbd5e1', '#f59e0b', '#cbd5e1', '#cbd5e1', '#10b981'
+                    ],
+                    borderRadius: 8,
+                    barThickness: 40
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: { 
+                        beginAtZero: false, 
+                        min: 20000,
+                        ticks: { stepSize: 1000 }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
