@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기후 변화 데이터 인포그래픽</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f0f4f8; }
+        .card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .gradient-text { background: linear-gradient(90deg, #ef4444, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-5xl mx-auto">
+        <!-- Header -->
+        <header class="text-center mb-10">
+            <h1 class="text-4xl md:text-5xl font-black mb-4">지구가 보내는 <span class="gradient-text">경고 신호</span></h1>
+            <p class="text-gray-600 text-lg">2020 - 2024 기후 변화 데이터 분석 인포그래픽</p>
+        </header>
+
+        <!-- Main Stats Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- CO2 Stat -->
+            <div class="card p-6 text-center border-t-8 border-blue-500">
+                <div class="text-blue-500 mb-2">
+                    <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
+                </div>
+                <h3 class="font-bold text-gray-500 uppercase text-sm">CO₂ 농도 (2024)</h3>
+                <p class="text-3xl font-black text-gray-800">428.0 <span class="text-sm">ppm</span></p>
+                <p class="text-blue-500 text-sm mt-2 font-bold">↑ 2.5% 상승 (vs 2020)</p>
+            </div>
+            <!-- CH4 Stat -->
+            <div class="card p-6 text-center border-t-8 border-green-500">
+                <div class="text-green-500 mb-2">
+                    <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                </div>
+                <h3 class="font-bold text-gray-500 uppercase text-sm">CH₄ 농도 (2024)</h3>
+                <p class="text-3xl font-black text-gray-800">2,022 <span class="text-sm">ppb</span></p>
+                <p class="text-green-500 text-sm mt-2 font-bold">↑ 50 ppb 증가</p>
+            </div>
+            <!-- Temp Stat -->
+            <div class="card p-6 text-center border-t-8 border-red-500">
+                <div class="text-red-500 mb-2">
+                    <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                </div>
+                <h3 class="font-bold text-gray-500 uppercase text-sm">평균 기온 (2024)</h3>
+                <p class="text-3xl font-black text-gray-800">14.7 <span class="text-sm">℃</span></p>
+                <p class="text-red-500 text-sm mt-2 font-bold">2023년 대비 급상승</p>
+            </div>
+        </div>
+
+        <!-- Chart Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="card p-6">
+                <h3 class="text-xl font-bold mb-4 text-gray-700">기온 및 CO₂ 변화 추이</h3>
+                <canvas id="tempCo2Chart"></canvas>
+            </div>
+            <div class="card p-6 flex flex-col justify-center">
+                <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
+                    <h4 class="font-bold text-red-800 text-lg mb-1">🚨 2023년의 특이점 (Tipping Point)</h4>
+                    <p class="text-red-700">2022년에서 2023년 사이, 기온이 무려 <strong>1.0℃</strong>나 급등했습니다. 이는 지난 5년 중 가장 위협적인 변화입니다.</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 p-2 rounded-lg mr-4">🌡️</div>
+                        <div>
+                            <p class="font-bold">지속적 온난화</p>
+                            <p class="text-sm text-gray-600">온실가스 농도와 기온은 강한 양의 상관관계를 보입니다.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-green-100 p-2 rounded-lg mr-4">🌿</div>
+                        <div>
+                            <p class="font-bold">탄소 중립의 시급성</p>
+                            <p class="text-sm text-gray-600">매년 경신되는 기록을 멈추기 위한 에너지 전환이 필수적입니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Footer -->
+        <footer class="mt-12 text-center text-gray-400 text-sm">
+            <p>© 2026 Climate Data Lab | 데이터 출처: 온난화.csv</p>
+        </footer>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('tempCo2Chart').getContext('2d');
+        const data = {
+            labels: ['2020', '2021', '2022', '2023', '2024'],
+            datasets: [
+                {
+                    label: '기온 (℃)',
+                    data: [13.4, 13.5, 13.6, 14.6, 14.7],
+                    borderColor: '#ef4444',
+                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                    yAxisID: 'yTemp',
+                    type: 'line',
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 4,
+                    pointRadius: 6,
+                    pointBackgroundColor: '#ef4444'
+                },
+                {
+                    label: 'CO₂ (ppm)',
+                    data: [417.6, 421.4, 422.8, 425.6, 428.0],
+                    backgroundColor: 'rgba(59, 130, 246, 0.6)',
+                    yAxisID: 'yCo2',
+                    type: 'bar',
+                    borderRadius: 8
+                }
+            ]
+        };
+
+        const config = {
+            data: data,
+            options: {
+                responsive: true,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                scales: {
+                    yTemp: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: { display: true, text: '기온 (℃)' },
+                        min: 13,
+                        max: 15.5
+                    },
+                    yCo2: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: { display: true, text: 'CO₂ (ppm)' },
+                        grid: { drawOnChartArea: false },
+                        min: 400,
+                        max: 440
+                    }
+                },
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        };
+
+        new Chart(ctx, config);
+    </script>
+</body>
+</html>
