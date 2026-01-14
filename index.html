@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>빅데이터 분석 포트폴리오</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: #f8fbff;
+            color: #1e293b;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 50%, #60a5fa 100%);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 30px -10px rgba(59, 130, 246, 0.15);
+            border-color: #3b82f6;
+        }
+
+        .badge-group {
+            background: linear-gradient(90deg, #dbeafe 0%, #eff6ff 100%);
+            color: #1d4ed8;
+            border: 1px solid #bfdbfe;
+        }
+
+        .badge-personal {
+            background: #f1f5f9;
+            color: #64748b;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stagger-load {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white py-4 px-6 sticky top-0 z-50 shadow-md">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="text-xl font-bold tracking-tight text-white">
+                <i class="fa-solid fa-chart-line mr-2"></i>BIGDATA PORTFOLIO
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-medium">
+                <a href="#" class="nav-link text-white no-underline">Home</a>
+                <a href="#projects" class="nav-link text-white no-underline">Projects</a>
+                <a href="#" class="nav-link text-white no-underline">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="gradient-bg text-white py-24 px-6 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto relative z-10 text-center">
+            <div class="inline-block bg-blue-500/30 px-4 py-1.5 rounded-full text-sm font-semibold mb-6 border border-blue-300/30 stagger-load" style="animation-delay: 0.1s;">
+                빅데이터분석 교과목 포트폴리오
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight stagger-load text-white" style="animation-delay: 0.2s;">
+                데이터로 그리는 <span class="text-blue-200">미래 가치</span>
+            </h1>
+            <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto mb-10 leading-relaxed stagger-load font-light" style="animation-delay: 0.3s;">
+                데이터 수집부터 시각화까지, 분석 역량을 통해 도출한 사회적 인사이트를 공유합니다.
+            </p>
+            <div class="flex justify-center gap-6 stagger-load" style="animation-delay: 0.4s;">
+                <a href="#projects" class="bg-white text-blue-600 px-8 py-3 rounded-full font-bold hover:bg-blue-50 transition-colors shadow-lg shadow-blue-900/20 no-underline text-sm uppercase tracking-wider">
+                    Explore Projects
+                </a>
+            </div>
+        </div>
+        
+        <!-- Decorative Shapes -->
+        <div class="absolute top-1/4 -left-20 w-80 h-80 bg-blue-400/20 rounded-full blur-3xl text-white"></div>
+        <div class="absolute bottom-0 -right-20 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl text-white"></div>
+    </header>
+
+    <!-- Projects Grid -->
+    <main id="projects" class="max-w-6xl mx-auto py-24 px-6 flex-grow">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-slate-800 mb-4">Project Archive</h2>
+            <div class="w-24 h-1.5 bg-blue-600 mx-auto rounded-full mb-4"></div>
+            <p class="text-slate-500">분석의 모든 과정을 체계적으로 정리한 프로젝트 보관함입니다.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            
+            <!-- Project 1: 신호위반 분석 (개인) -->
+            <a href="01.html" class="glass-card rounded-3xl p-8 flex flex-col h-full group stagger-load no-underline" style="animation-delay: 0.5s;">
+                <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                    <i class="fa-solid fa-traffic-light text-2xl"></i>
+                </div>
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="badge-personal text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Personal</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-3 text-slate-800">01. 신호위반 분석</h3>
+                <p class="text-slate-600 mb-8 leading-relaxed flex-grow">
+                    교통 공공 데이터를 활용하여 지역별 신호위반 발생 추이와 주요 위험 요인을 정밀 분석했습니다.
+                </p>
+                <div class="flex items-center text-blue-600 font-bold group-hover:translate-x-3 transition-transform">
+                    View Project <i class="fa-solid fa-chevron-right ml-2 text-sm"></i>
+                </div>
+            </a>
+
+            <!-- Project 2: 온난화 분석 (개인) -->
+            <a href="02.html" class="glass-card rounded-3xl p-8 flex flex-col h-full group stagger-load no-underline" style="animation-delay: 0.6s;">
+                <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                    <i class="fa-solid fa-earth-americas text-2xl"></i>
+                </div>
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="badge-personal text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Personal</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-3 text-slate-800">02. 온난화 분석</h3>
+                <p class="text-slate-600 mb-8 leading-relaxed flex-grow">
+                    지구 표면 온도 변화 데이터를 시각화하여 기후 변화의 속도와 심각성을 체계적으로 분석했습니다.
+                </p>
+                <div class="flex items-center text-blue-600 font-bold group-hover:translate-x-3 transition-transform">
+                    View Project <i class="fa-solid fa-chevron-right ml-2 text-sm"></i>
+                </div>
+            </a>
+
+            <!-- Project 3: 산불 분석 (조별 과제) -->
+            <a href="03.html" class="glass-card rounded-3xl p-8 flex flex-col h-full group border-blue-200 border-2 shadow-sm stagger-load no-underline" style="animation-delay: 0.7s;">
+                <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 text-blue-700 group-hover:bg-blue-700 group-hover:text-white transition-all duration-300">
+                    <i class="fa-solid fa-fire-extinguisher text-2xl"></i>
+                </div>
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="badge-group text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Group Project</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-3 text-slate-800">03. 산불 분석</h3>
+                <p class="text-slate-600 mb-8 leading-relaxed flex-grow">
+                    산불 발생 지역 데이터를 통합 분석하여 효과적인 방재 대책 수립을 위한 기초 자료를 구축했습니다.
+                </p>
+                <div class="flex items-center text-blue-700 font-bold group-hover:translate-x-3 transition-transform">
+                    Explore Team Work <i class="fa-solid fa-chevron-right ml-2 text-sm"></i>
+                </div>
+            </a>
+
+            <!-- Project 4: 데이터공학과 분석 (개인) -->
+            <a href="04.html" class="glass-card rounded-3xl p-8 flex flex-col h-full group stagger-load no-underline" style="animation-delay: 0.8s;">
+                <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                    <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                </div>
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="badge-personal text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Personal</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-3 text-slate-800">04. 데이터공학과 분석</h3>
+                <p class="text-slate-600 mb-8 leading-relaxed flex-grow">
+                    학과 커리큘럼과 연구 트렌드 데이터를 분석하여 학문적 성장 방향과 전문 역량의 흐름을 파악했습니다.
+                </p>
+                <div class="flex items-center text-blue-600 font-bold group-hover:translate-x-3 transition-transform">
+                    View Project <i class="fa-solid fa-chevron-right ml-2 text-sm"></i>
+                </div>
+            </a>
+
+            <!-- Project 5: AI 윤리 유튜브 분석 (개인) -->
+            <a href="05.html" class="glass-card rounded-3xl p-8 flex flex-col h-full group stagger-load no-underline" style="animation-delay: 0.9s;">
+                <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                    <i class="fa-brands fa-youtube text-2xl"></i>
+                </div>
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="badge-personal text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Personal</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-3 text-slate-800">05. AI 윤리 유튜브 분석</h3>
+                <p class="text-slate-600 mb-8 leading-relaxed flex-grow">
+                    유튜브 플랫폼의 텍스트 데이터를 분석하여 인공지능 윤리에 대한 사회적 인식과 주요 토픽을 도출했습니다.
+                </p>
+                <div class="flex items-center text-blue-600 font-bold group-hover:translate-x-3 transition-transform">
+                    View Project <i class="fa-solid fa-chevron-right ml-2 text-sm"></i>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-16 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <div class="text-white text-xl font-bold mb-2">빅데이터 분석 포트폴리오</div>
+                <p class="text-sm font-semibold text-blue-400 mb-1">동주여자고등학교 이윤채</p>
+                <p class="text-xs">Big Data Analysis Coursework Portfolio</p>
+            </div>
+            <div class="flex gap-6 text-2xl text-slate-400">
+                <a href="#" class="hover:text-white transition-colors no-underline text-slate-400"><i class="fa-brands fa-github"></i></a>
+                <a href="#" class="hover:text-white transition-colors no-underline text-slate-400"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" class="hover:text-white transition-colors no-underline text-slate-400"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+            <p class="text-xs">© All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#') {
+                    e.preventDefault();
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
