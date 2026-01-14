@@ -26,14 +26,16 @@
     <!-- 내비게이션 바 -->
     <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
         <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
-            <a href="#home" class="text-xl font-bold text-orange-600 flex items-center gap-2">
+            <!-- 홈 버튼 링크 수정: 외부 URL 연결 -->
+            <a href="https://yc0813.github.io/pnuu/" class="text-xl font-bold text-orange-600 flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
                 산불 분석 리포트
             </a>
             <div class="hidden md:flex gap-8 font-medium">
-                <a href="#home" class="hover:text-orange-600 transition">홈</a>
+                <!-- 홈 메뉴 링크 수정 -->
+                <a href="https://yc0813.github.io/pnuu/" class="hover:text-orange-600 transition font-bold">홈으로</a>
                 <a href="#trends" class="hover:text-orange-600 transition">연도별 추이</a>
                 <a href="#seasonal" class="hover:text-orange-600 transition">계절별 분석</a>
                 <a href="#strategy" class="hover:text-orange-600 transition">대응 전략</a>
@@ -41,7 +43,7 @@
         </div>
     </nav>
 
-    <!-- 히어로 섹션 (홈) -->
+    <!-- 히어로 섹션 (홈 역할을 하되 ID는 유지) -->
     <header id="home" class="hero-bg h-screen flex items-center justify-center text-center text-white px-4 pt-16">
         <div class="max-w-3xl">
             <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">기후 변화와 <br><span class="text-orange-400">산불 위기</span>의 서막</h1>
@@ -158,6 +160,7 @@
             <p class="mb-4 text-gray-400">© 2026 산불 발생 현황 데이터 분석 보고서</p>
             <p class="text-sm text-gray-500 italic">본 페이지는 업로드된 통계 자료와 분석 모델을 기반으로 작성되었습니다.</p>
             <div class="mt-8">
+                <!-- 하단 화살표 버튼은 페이지 최상단으로 이동 유지 -->
                 <button onclick="window.scrollTo(0,0)" class="bg-gray-800 hover:bg-gray-700 p-3 rounded-full transition">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
