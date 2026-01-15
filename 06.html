@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>심층 분석: 생성형 AI와 창작자의 권리</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .home-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .home-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid #f1f5f9;
+        }
+
+        .highlight-blue { border-left: 4px solid #3b82f6; }
+        .highlight-purple { border-left: 4px solid #8b5cf6; }
+        .highlight-orange { border-left: 4px solid #f97316; }
+        .highlight-green { border-left: 4px solid #10b981; }
+
+        .comment-bubble {
+            background: #f8fafc;
+            border-radius: 1rem;
+            padding: 1rem;
+            border: 1px inset #edf2f7;
+            position: relative;
+        }
+        .comment-bubble::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: -10px;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid #f8fafc;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- 네비게이션 -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 h-18 flex items-center justify-between py-4">
+            <div class="flex items-center gap-2">
+                <i class="fas fa-shield-alt text-blue-600 text-xl"></i>
+                <h1 class="font-bold text-xl tracking-tight text-slate-800">AI 저작권 이슈 리포트</h1>
+            </div>
+            <a href="https://yc0813.github.io/pnuu/" class="home-btn bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full font-semibold flex items-center gap-2 shadow-md">
+                <i class="fas fa-home"></i>
+                <span>홈으로 이동</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- 히어로 섹션 -->
+    <header class="pt-36 pb-20 px-6 gradient-bg text-white overflow-hidden relative">
+        <div class="max-w-5xl mx-auto text-center relative z-10 fade-in">
+            <div class="inline-block px-4 py-1.5 mb-6 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-sm font-bold">
+                Special Issue Analysis
+            </div>
+            <h2 class="text-4xl md:text-6xl font-extrabold mb-8 leading-tight">
+                AI 기술의 진보인가,<br><span class="text-blue-400">창작 노동의 침해</span>인가?
+            </h2>
+            <p class="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                생성형 AI의 무단 데이터 학습 문제와 저작권 보호를 둘러싼 갈등, 그리고 창작 생태계 보호를 위한 제도적 대안을 분석합니다.
+            </p>
+        </div>
+        <!-- 배경 장식 -->
+        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 py-20 space-y-16">
+        
+        <!-- 섹션 1: 주요 논란 -->
+        <section class="section-card highlight-blue">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="p-3 bg-blue-50 text-blue-600 rounded-xl"><i class="fas fa-exclamation-circle"></i></span>
+                <h3 class="text-2xl font-bold">1. 생성형 AI와 '그림체 도둑' 논란</h3>
+            </div>
+            <div class="space-y-4 text-slate-600 leading-relaxed">
+                <p>
+                    최근 디지털 창작 생태계에서는 AI를 활용한 작화와 후보정에 대한 거센 비판이 제기되었습니다. 특히 특정 작가의 화풍을 그대로 복제하는 듯한 AI 결과물은 <strong>'노동의 가치 훼손'</strong>이라는 본질적인 문제를 야기했습니다.
+                </p>
+                <div class="grid md:grid-cols-2 gap-6 mt-6">
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                        <h4 class="font-bold text-slate-800 mb-2">논란의 배경</h4>
+                        <ul class="list-disc list-inside space-y-1 text-sm">
+                            <li>특정 작가·작품의 스타일을 학습한 편향적 AI 모델</li>
+                            <li>창작자 동의 없는 학습 데이터 무단 수집(크롤링)</li>
+                            <li>AI 특유의 이질감이 주는 불쾌한 골짜기 현상</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                        <h4 class="font-bold text-slate-800 mb-2">대중의 반응</h4>
+                        <ul class="list-disc list-inside space-y-1 text-sm">
+                            <li>콘텐츠 플랫폼에 대한 AI 가이드라인 요구 강화</li>
+                            <li>창작자의 정당한 노력과 권리에 대한 사회적 지지</li>
+                            <li>AI 활용 작품에 대한 거부감 및 평점 하락 현상</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 섹션 2: 댓글 및 여론 분석 (NEW) -->
+        <section class="section-card highlight-orange">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="p-3 bg-orange-50 text-orange-600 rounded-xl"><i class="fas fa-comments"></i></span>
+                <h3 class="text-2xl font-bold">2. 대중의 목소리: 여론 및 댓글 분석</h3>
+            </div>
+            <div class="space-y-6">
+                <p class="text-slate-600 leading-relaxed">
+                    보고서에 따르면, AI 작화 논란이 발생한 웹툰의 댓글 창은 단순한 비판을 넘어 <strong>창작 노동의 본질</strong>에 대한 토론의 장이 되었습니다. 대중은 기술의 편리함보다 '창작의 진정성'에 무게를 두었습니다.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-4 mt-4">
+                    <div class="space-y-4">
+                        <div class="comment-bubble">
+                            <p class="text-sm font-medium text-slate-700">"작가의 개성이 담긴 그림체를 데이터로만 취급해서 무단으로 학습시키는 게 과연 정당한가요? 이건 명백한 약탈입니다."</p>
+                            <span class="text-xs text-slate-400 mt-2 block">— 베스트 댓글 중</span>
+                        </div>
+                        <div class="comment-bubble">
+                            <p class="text-sm font-medium text-slate-700">"돈을 내고 보는 독자로서 AI가 대충 뽑아낸 그림을 보고 싶지 않습니다. 작가의 정성과 노력이 담긴 결과물을 원해요."</p>
+                            <span class="text-xs text-slate-400 mt-2 block">— 베스트 댓글 중</span>
+                        </div>
+                    </div>
+                    <div class="bg-orange-50 p-6 rounded-2xl flex flex-col justify-center border border-orange-100">
+                        <h4 class="font-bold text-orange-800 mb-4 flex items-center gap-2">
+                            <i class="fas fa-chart-pie"></i> 주요 여론 키워드
+                        </h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white rounded-full border border-orange-200 text-sm text-orange-700 font-bold">무단 학습</span>
+                            <span class="px-3 py-1 bg-white rounded-full border border-orange-200 text-sm text-orange-700 font-bold">그림체 도둑</span>
+                            <span class="px-3 py-1 bg-white rounded-full border border-orange-200 text-sm text-orange-700 font-bold">창작 노동 가치</span>
+                            <span class="px-3 py-1 bg-white rounded-full border border-orange-200 text-sm text-orange-700 font-bold">독자 기만</span>
+                            <span class="px-3 py-1 bg-white rounded-full border border-orange-200 text-sm text-orange-700 font-bold">불쾌한 골짜기</span>
+                        </div>
+                        <p class="mt-4 text-xs text-orange-600 leading-tight italic">
+                            * 대다수의 독자는 AI 사용 여부보다 '원작자의 권리 침해'와 '질적 저하'에 대해 가장 큰 분노를 느꼈음을 알 수 있습니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 섹션 3: 법적 갈등 -->
+        <section class="section-card highlight-purple">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="p-3 bg-purple-50 text-purple-600 rounded-xl"><i class="fas fa-balance-scale"></i></span>
+                <h3 class="text-2xl font-bold">3. 법적 딜레마: 아이디어 vs 표현</h3>
+            </div>
+            <div class="space-y-6">
+                <div class="p-6 bg-purple-50 rounded-2xl border border-purple-100">
+                    <h4 class="font-bold text-purple-900 mb-3">화풍은 보호받을 수 있는가?</h4>
+                    <p class="text-slate-700">
+                        전통적인 저작권법은 구체적으로 고정된 '표현'만을 보호합니다. 따라서 AI가 수만 장의 데이터를 분석하여 학습한 <strong>'그림체'나 '스타일'</strong>은 아이디어의 영역으로 간주되어 법적으로 직접적인 제재를 가하기 어려운 회색지대에 놓여 있습니다.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-bold mb-3 flex items-center gap-2 text-slate-800">
+                            <i class="fas fa-database text-slate-400"></i> 데이터 학습의 문제
+                        </h4>
+                        <p class="text-slate-600 text-sm">
+                            기술 개발사들은 방대한 데이터 수집이 인공지능 발전을 위한 '공정이용'이라고 주장합니다. 하지만 원저작자들은 자신의 자산이 영리적 도구로 쓰이는 것에 대한 명백한 거부권을 행사하고 있습니다.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-3 flex items-center gap-2 text-slate-800">
+                            <i class="fas fa-gavel text-slate-400"></i> 규제의 필요성
+                        </h4>
+                        <p class="text-slate-600 text-sm">
+                            기존 법체계가 AI의 '스타일 복제'를 처벌하지 못함에 따라, 무단 학습 데이터에 대한 권리 보호를 위한 새로운 특별법이나 가이드라인 제정이 시급한 과제로 떠오르고 있습니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 섹션 4: 대안과 상생 -->
+        <section class="section-card highlight-green">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="p-3 bg-green-50 text-green-600 rounded-xl"><i class="fas fa-handshake"></i></span>
+                <h3 class="text-2xl font-bold">4. 건강한 창작 환경을 위한 제언</h3>
+            </div>
+            <div class="space-y-8">
+                <p class="text-slate-600">
+                    AI 기술과 인간의 창작이 조화를 이루기 위해서는 기술의 무분별한 확장을 견제할 수 있는 사회적 보호 장치가 반드시 필요합니다.
+                </p>
+                <div class="grid md:grid-cols-3 gap-6 text-center">
+                    <div class="p-4">
+                        <div class="text-3xl text-blue-500 mb-3"><i class="fas fa-coins"></i></div>
+                        <h5 class="font-bold mb-2">정당한 보상 체계</h5>
+                        <p class="text-xs text-slate-500">데이터 학습에 활용되는 저작물에 대한 투명한 계약 및 수익 배분</p>
+                    </div>
+                    <div class="p-4">
+                        <div class="text-3xl text-purple-500 mb-3"><i class="fas fa-tag"></i></div>
+                        <h5 class="font-bold mb-2">투명성 의무화</h5>
+                        <p class="text-xs text-slate-500">AI를 활용한 콘텐츠에 대한 명확한 표기와 데이터 출처 공개</p>
+                    </div>
+                    <div class="p-4">
+                        <div class="text-3xl text-green-500 mb-3"><i class="fas fa-lock"></i></div>
+                        <h5 class="font-bold mb-2">기술적 보호 수단</h5>
+                        <p class="text-xs text-slate-500">포이즈닝(Poisoning) 등 AI의 무단 학습을 방지하는 기술 보급</p>
+                    </div>
+                </div>
+                <div class="bg-slate-900 text-white p-8 rounded-2xl relative overflow-hidden">
+                    <div class="relative z-10 text-center">
+                        <h4 class="text-xl font-bold mb-4">공존을 향한 미래</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-2xl mx-auto italic">
+                            "AI가 예술을 대체하는 것이 아니라, 창작자의 권리를 존중하며 도구로서 기여할 때 진정한 기술적 진보가 완성됩니다. 인간 창작물의 독창성과 가치가 매몰되지 않는 미래를 함께 만들어가야 합니다."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="bg-slate-100 border-t border-slate-200 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <div class="font-bold text-slate-800 text-lg mb-4">AI Copyright Awareness</div>
+            <p class="text-slate-500 text-sm mb-6">본 페이지는 생성형 AI의 윤리적 사용과 창작자 권리 보호를 위해 제작되었습니다.</p>
+            <div class="flex justify-center gap-6 text-slate-400 text-xl">
+                <a href="#" class="hover:text-blue-600"><i class="fab fa-github"></i></a>
+                <a href="#" class="hover:text-blue-600"><i class="fas fa-info-circle"></i></a>
+            </div>
+            <div class="mt-8 text-slate-400 text-xs">
+                © 2026 Interactive AI Copyright Analysis.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg', 'py-2');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.remove('shadow-lg', 'py-2');
+                nav.classList.add('py-4');
+            }
+        });
+    </script>
+</body>
+</html>
